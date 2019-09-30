@@ -5,13 +5,16 @@ import { ListItem } from '../interfaces/list-item';
 @Component({
   selector: 'app-list-manager',
   template: `
+
+  <div class="todo-app">
     <app-input-button-unit (submit)="addItem($event)"></app-input-button-unit>
 
     <ul>
       <li *ngFor="let listItem of todoList">
-        <app-list-item [item]="listItem"></app-list-item>
+      <app-list-item [item]="listItem"></app-list-item>
       </li>
     </ul>
+  </div>
   `,
   styleUrls: ['./list-manager.component.scss']
 })
