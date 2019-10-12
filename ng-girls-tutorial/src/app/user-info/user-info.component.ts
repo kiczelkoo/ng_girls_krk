@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-info',
   template: `
-  <form [formGroup]="userFormGroup">
+  <form [formGroup]="userFormGroup" (ngSubmit)="submitUserInfo()">
   
   <label>
     First Name:
@@ -34,6 +35,7 @@ import { FormControl, FormGroup } from '@angular/forms';
     Date of Birth:
     <input type="date" formControlName="dateOfBirth">
   </label>
+  <button type="submit" [disabled]="!userFormGroup.valid">Submit</button>
 
 </form>
   `,
@@ -47,7 +49,7 @@ export class UserInfoComponent implements OnInit {
   }
 
   userFormGroup = new FormGroup({
-    firstName: new FormControl(''),
+    firstName: new FormControl('', Validators.required),
     lastName: new FormControl(''),
     email: new FormControl(''),
     phone: new FormControl(''),
@@ -55,5 +57,9 @@ export class UserInfoComponent implements OnInit {
     bestFriendName: new FormControl(''),
     dateOfBirth: new FormControl(''),
   });
+
+  submitUserInfo() {
+    console.log(this.userFormGroup.value)
+  }
 
 }
