@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user-info',
   template: `
-    <p>
-      user-info works!
-    </p>
+  <input type="text" [formControl]="firstName" required>
   `,
   styleUrls: ['./user-info.component.scss']
 })
@@ -15,5 +14,7 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  firstName = new FormControl('');
 
 }
